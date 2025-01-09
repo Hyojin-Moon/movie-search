@@ -30,7 +30,7 @@ function fetchMovies() {
         const title = e['title']
         const vote_average = e['vote_average']
         const poster_path = e['poster_path']
-        const id = e['id'];
+        const id = e['id']; //클릭때 활용할 부분
         const html = `
         <div class="movie-item">
             <img src="https://image.tmdb.org/t/p/w500${poster_path}" alt="${title}" />
