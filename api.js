@@ -31,14 +31,14 @@ function fetchMovies() {
         const vote_average = e['vote_average']
         const poster_path = e['poster_path']
         const id = e['id']; //클릭때 활용할 부분
-        const html = `
+        const card_html = `
         <div class="movie-item">
-            <img src="https://image.tmdb.org/t/p/w500${poster_path}" alt="${title}" />
+            <img src="https://image.tmdb.org/t/p/w500${poster_path}" alt="${title}"/>
             <h3>${title}</h3>
             <p>평점: ${vote_average}</p>
           </div>
         `;
-        movieList.insertAdjacentHTML('beforeend', html);
+        movieList.insertAdjacentHTML('beforeend', card_html);
       });
     })
 
