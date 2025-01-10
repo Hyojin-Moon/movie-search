@@ -66,8 +66,11 @@ searchInput.addEventListener('input', (e) => {
   const filteredMovies = movies.filter(movie =>
     movie.title.toLowerCase().includes(searchTerm) // 대소문자 구분 없이 검색
   );
-  
-  renderMovies(filteredMovies);
+  if (filteredMovies.length === 0) {
+    document.querySelector('.movie-list').innerHTML = '<p>검색 결과가 없습니다.</p>';
+  } else {
+    renderMovies(filteredMovies);
+  }
 });
 
 
