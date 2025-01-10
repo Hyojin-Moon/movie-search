@@ -62,10 +62,11 @@ function renderMovies(movieData) {
 const searchInput = document.querySelector('#searchInput');
 
 searchInput.addEventListener('input', (e) => {
-  const searchTerm = e.target.value.toLowerCase(); //인풋창에 입력한 값
+  const searchTerm = e.target.value.toLowerCase().trim(); //인풋창에 입력한 값
   const filteredMovies = movies.filter(movie =>
     movie.title.toLowerCase().includes(searchTerm) // 대소문자 구분 없이 검색
   );
+  
   renderMovies(filteredMovies);
 });
 
