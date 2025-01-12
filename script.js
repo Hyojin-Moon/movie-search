@@ -5,20 +5,18 @@ const movieList = document.querySelector('.movie-list'); //영화카드영역
 const movieModal = document.querySelector('.movie-modal'); //모달
 const searchInput = document.querySelector('#searchInput'); //검색
 const slider = document.querySelector('.slider'); // 슬라이더 사용
+
 let movies = []; //영화데이터저장
-
-const options = {
-  method: 'GET',
-  headers: {
-    accept: 'application/json',
-    Authorization: `Bearer ${API_TOKEN}`
-  }
-};
-
 
 // ** 영화 데이터 가져오기 **
 function fetchMovies() {
-
+  const options = {
+    method: 'GET',
+    headers: {
+      accept: 'application/json',
+      Authorization: `Bearer ${API_TOKEN}`
+    }
+  };
   fetch(API_URL, options)
     .then(res => {
       console.log(res.status)
@@ -40,8 +38,10 @@ function fetchMovies() {
     });
 }
 
+
 // ** 영화 데이터 노출 **
 function renderMovies(movieData) {
+
   movieList.innerHTML = ''; //초기화
   movieData.forEach((e, index) => {
     const title = e['title']
@@ -57,14 +57,14 @@ function renderMovies(movieData) {
         `;
     movieList.insertAdjacentHTML('beforeend', card_html);
   });
-
 }
 
-// ** 검색 기능 **
+
+// ** 검색 기능 ** // 디바운싱 처리 하기
 searchInput.addEventListener('input', (e) => {
 
-  const searchResult = e.target.value.toLowerCase().trim(); //인풋창에 입력한 값
-  const filteredMovies = movies.filter(movie =>
+  const searchResult = e.target.value.toLowerCase().trim(); //인풋창에 입력한 값 공백제거 해주기
+  const filteredMovies = movies.filter(movie =>   //movies가 전역데이터
     movie.title.toLowerCase().includes(searchResult) // 대소문자 구분 없이 검색
   );
 
@@ -74,6 +74,7 @@ searchInput.addEventListener('input', (e) => {
     renderMovies(filteredMovies);
   }
 })
+
 
 // ** 모달표시 **   1) 클릭된요소확인 2) 클릭된요소 id확인 3) id로 영화데이터확인
 function openModal(e) {
@@ -89,14 +90,16 @@ function openModal(e) {
   }
 }
 
+
 // ** 모달닫기 **
 function closeModal() {
   movieModal.classList.remove('active'); 
 }
 
+
 // ** 모달창에 띄우는 정보 **
 function renderMoviesDetail(movie) { // matchMovie가 매개변수로 전달됨
-  const { title, poster_path, overview, vote_average } = movie;
+  const { title, poster_path, release_date, vote_average } = movie; //구조분해할당
 
   const detailHtml = `
     <div class="modal-header">
@@ -105,20 +108,26 @@ function renderMoviesDetail(movie) { // matchMovie가 매개변수로 전달됨
     </div>
     <div class="modal-body">
       <img src="https://image.tmdb.org/t/p/w500${poster_path}" alt="${title}" />
-      <p><strong>줄거리:</strong> ${overview || "소개준비중"}</p>
-      <p><strong>평점:</strong> ${vote_average}</p>
+      <p><strong>개봉일:</strong> ${release_date}</p>
+      <p><strong>★</strong> ${vote_average}</p>
     </div>
   `;
   document.querySelector(".modal-content").innerHTML = detailHtml;
-  // 닫기 버튼
+  // 닫기 버튼 클릭이벤트
   document.querySelector('.modal-close').addEventListener('click', closeModal);
 }
+
+
+// ** 북마크 **
+function Bookmark () {
+
+}
+
 
 // ** 클릭 이벤트 **
 movieList.addEventListener('click', function (e) {
   openModal(e);
 });
 
-// ** 북마크 **
 
 fetchMovies();
