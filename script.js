@@ -62,7 +62,7 @@ function renderMovies(movieData) {
 
 
 // ** 검색 기능 ** // 디바운싱 처리 하기
-let debounceTimeout;
+let debounceTimeout; // 디바운싱 세팅
 
 searchInput.addEventListener('input', (e) => {
 
@@ -81,7 +81,7 @@ searchInput.addEventListener('input', (e) => {
 
 // ** 검색 API 호출 함수 **
 function fetchSearchResults(query) {
-  const url = `${SEARCH_API_URL}&query=${encodeURIComponent(query)}`;
+  const url = `${SEARCH_API_URL}&query=${encodeURIComponent(query)}`; //입력값 query를 인코딩하는 메서드
   const options = {
     method: 'GET',
     headers: {
@@ -101,7 +101,8 @@ function fetchSearchResults(query) {
       if (data.results.length === 0) {
         movieList.innerHTML = `<p>검색된 결과가 없습니다.</p>`;
       } else {
-        renderMovies(data.results); // 검색 결과 렌더링
+        movies = data.results; //검색결과 배열에 담기 => 상세페이지 기능 설정
+        renderMovies(movies); // 검색 결과 렌더링
       }
     })
     .catch((err) => {
