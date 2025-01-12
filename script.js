@@ -61,20 +61,36 @@ function renderMovies(movieData) {
 
 
 // ** 검색 기능 ** // 디바운싱 처리 하기
+let debounceTimeout;
+
 searchInput.addEventListener('input', (e) => {
 
   const searchResult = e.target.value.toLowerCase().trim(); //인풋창에 입력한 값 공백제거 해주기
-  const filteredMovies = movies.filter(movie =>   //movies가 전역데이터
-    movie.title.toLowerCase().includes(searchResult) // 대소문자 구분 없이 검색
-  );
-
-  if (filteredMovies.length === 0) { //결과가 없으면 메세지 출력
-    movieList.innerHTML = `<p>검색된 결과가 없습니다.</p>`;
-  } else {
-    renderMovies(filteredMovies);
+  if (!searchResult) {
+    renderMovies(movies); // 검색어 없으면 기본 목록 출력
+    return;
   }
+  // 디바운싱 
+  clearTimeout(debounceTimeout);
+  debounceTimeout = setTimeout(() => {
+    fetchSearchResults(searchResult)
+  }, 300);
+  // const filteredMovies = movies.filter(movie =>   //movies가 전역데이터
+  //   movie.title.toLowerCase().includes(searchResult) // 대소문자 구분 없이 검색
+  // );
+
+  // if (filteredMovies.length === 0) { //결과가 없으면 메세지 출력
+  //   movieList.innerHTML = `<p>검색된 결과가 없습니다.</p>`;
+  // } else {
+  //   renderMovies(filteredMovies);
+  // }
 })
 
+
+// ** 검색 API 호출 함수 **
+function fetchSearchResults() {
+  console.log('test');
+}
 
 // ** 모달표시 **   1) 클릭된요소확인 2) 클릭된요소 id확인 3) id로 영화데이터확인
 function openModal(e) {
