@@ -71,6 +71,7 @@ searchInput.addEventListener('input', (e) => {
     renderMovies(movies); // 검색어 없으면 기본 목록 출력
     return;
   }
+  
   // 디바운싱 
   clearTimeout(debounceTimeout);
   debounceTimeout = setTimeout(() => {
@@ -140,6 +141,7 @@ function renderMoviesDetail(movie) { // matchMovie가 매개변수로 전달됨
     <div class="modal-header">
       <h2>${title}</h2>
       <button class="modal-close">닫기</button>
+      <button class="bookmarkbtn">찜하기</button>
     </div>
     <div class="modal-body">
       <img src="https://image.tmdb.org/t/p/w500${poster_path}" alt="${title}" />
@@ -153,16 +155,19 @@ function renderMoviesDetail(movie) { // matchMovie가 매개변수로 전달됨
 }
 
 
-// ** 북마크 **
-function Bookmark () {
-
+// ** 북마크추가 **
+function addBookmark () {
+  
 }
+
 
 
 // ** 클릭 이벤트 **
 movieList.addEventListener('click', function (e) {
   openModal(e);
 });
-
+movieModal.addEventListener('click', (e) => {
+  
+})
 
 fetchMovies();
