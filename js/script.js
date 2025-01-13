@@ -7,7 +7,9 @@ const movieModal = document.querySelector('.movie-modal'); //모달
 const searchInput = document.querySelector('#searchInput'); //검색
 const slider = document.querySelector('.slider'); // 슬라이더 사용
 
+let debounceTimeout; // 디바운싱 세팅
 let movies = []; //영화데이터저장
+let originMovies = []; //초기데이터 저장
 
 // ** 영화 데이터 가져오기 **
 function fetchMovies() {
@@ -30,6 +32,7 @@ function fetchMovies() {
     .then(data => {
       console.log(data);
       movies = data['results'];
+      originMovies = [...movies];
       renderMovies(movies)
     })
 
@@ -61,14 +64,13 @@ function renderMovies(movieData) {
 }
 
 
-// ** 검색 기능 ** // 디바운싱 처리 하기
-let debounceTimeout; // 디바운싱 세팅
+// ** 검색 기능 ** 
 
 searchInput.addEventListener('input', (e) => {
 
   const searchResult = e.target.value.toLowerCase().trim(); //인풋창에 입력한 값 공백제거 해주기
   if (!searchResult) {
-    renderMovies(movies); // 검색어 없으면 기본 목록 출력
+    renderMovies(originMovies); // 검색어 없으면 기본 목록 출력
     return;
   }
   
@@ -76,7 +78,7 @@ searchInput.addEventListener('input', (e) => {
   clearTimeout(debounceTimeout);
   debounceTimeout = setTimeout(() => {
     fetchSearchResults(searchResult)
-  }, 300);
+  }, 200);
 })
 
 
