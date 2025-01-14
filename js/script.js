@@ -16,7 +16,7 @@ let movies = []; //영화데이터저장
 let originMovies = []; //초기데이터 저장
 
 // ** 영화 데이터 가져오기 **
-function fetchMovies() {
+async function fetchMovies() {
   const options = {
     method: 'GET',
     headers: {
@@ -24,26 +24,20 @@ function fetchMovies() {
       Authorization: `Bearer ${API_TOKEN}`
     }
   };
-  fetch(API_URL, options)
-    .then(res => {
-      console.log(res.status)
-      if (!res.ok) {
-        throw new Error("네트워크 주소가 ok아님"); //잘못된 주소가 오면 에러처리
-      }
-      return res.json()
-    })
+  try {
+    const response = await fetch(API_URL, options)
 
-    .then(data => {
-      console.log(data);
-      movies = data['results'];
-      originMovies = [...movies];
-      renderMovies(movies)
-    })
-
-    .catch((err) => {
-      console.error(err)
-      alert("API 호출 에러 발생");
-    });
+    if (!response.ok) {
+      throw new Error("네트워크 주소가 ok아님"); //잘못된 주소가 오면 에러처리
+    }
+    const data = await response.json();
+    movies = data['results'];
+    originMovies = [...movies];
+    renderMovies(movies);
+  } catch (err) {
+    console.error(err)
+    alert("API 호출 에러 발생");
+  }
 }
 
 
@@ -76,7 +70,7 @@ function searchMovies(e) {
     clearTimeout(debounceTimeout);
     return;
   }
-  
+
   // 디바운싱 
   clearTimeout(debounceTimeout);
   debounceTimeout = setTimeout(() => {
@@ -135,7 +129,7 @@ function openModal(e) {
 
 // ** 모달닫기 **
 function closeModal() {
-  movieModal.classList.remove('active'); 
+  movieModal.classList.remove('active');
 }
 
 
@@ -160,10 +154,11 @@ function renderMoviesDetail(movie) { // matchMovie가 매개변수로 전달됨
   document.querySelector(".modal-content").innerHTML = detailHtml;
   // 닫기 버튼 클릭이벤트
   document.querySelector('.modal-close').addEventListener('click', closeModal);
+
   // 북마크 추가 클릭이벤트
   const bookmarkBtn = document.querySelector('.bookmarkbtn');
   bookmarkBtn.addEventListener('click', () => {
-    if(getBookmarks().some((item) => item.id === id)) {
+    if (getBookmarks().some((item) => item.id === id)) {
       removeBookmark(movie.id);
       bookmarkBtn.textContent = '찜하기';
     } else {
@@ -187,7 +182,7 @@ bookMark.addEventListener('click', function (e) {
   showBookmarks(e);
 })
 // ** 로고클릭 이벤트 **
-logo.addEventListener('click', function() {
+logo.addEventListener('click', function () {
   location.href = '/index.html'
 })
 
