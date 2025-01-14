@@ -186,6 +186,10 @@ searchInput.addEventListener('input', (e) => {
 bookMark.addEventListener('click', function (e) {
   showBookmarks(e);
 })
+// ** 로고클릭 이벤트 **
+logo.addEventListener('click', function() {
+  location.href = '/index.html'
+})
 
 
 fetchMovies();
