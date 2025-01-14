@@ -1,4 +1,4 @@
-import { addBookmark, getBookmarks } from './bookmark.js';
+import { addBookmark, getBookmarks, showBookmarks } from './bookmark.js';
 
 const API_URL = 'https://api.themoviedb.org/3/movie/popular?language=ko&page=1';
 const API_TOKEN = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYmYwMjQ4ZTYyMDVkYzA4YTAyNGRiOTNhMWMyZmUzNiIsIm5iZiI6MTczNjI5NjU2NC4yMDk5OTk4LCJzdWIiOiI2NzdkYzg3NDA0NGI2Y2E2NzY0ZTRkOWYiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.s-M0-iIwNQyL3k8gfnll33ZQR8p30YYUQG_kHUZlVbI';
@@ -68,9 +68,7 @@ function renderMovies(movieData) {
 
 
 // ** 검색 기능 ** 
-
-searchInput.addEventListener('input', (e) => {
-
+function searchMovies(e) {
   const searchResult = e.target.value.toLowerCase().trim(); //인풋창에 입력한 값 공백제거 해주기
   if (!searchResult) {
     renderMovies(originMovies); // 검색어 없으면 기본 목록 출력
@@ -83,7 +81,8 @@ searchInput.addEventListener('input', (e) => {
   debounceTimeout = setTimeout(() => {
     fetchSearchResults(searchResult)
   }, 300);
-})
+}
+
 
 
 // ** 검색 API 호출 함수 **
@@ -164,18 +163,18 @@ function renderMoviesDetail(movie) { // matchMovie가 매개변수로 전달됨
   });
 }
 
-// ** 북마크클릭 **
-bookMark.addEventListener('click', function (e) {
-  
-})
 
-
-// ** 클릭 이벤트 **
+// ** 영화카드클릭(상세모달) 이벤트 **
 movieList.addEventListener('click', function (e) {
   openModal(e);
 });
-movieModal.addEventListener('click', (e) => {
-  
+// ** 검색이벤트 **
+searchInput.addEventListener('input', (e) => {
+  searchMovies(e);
+})
+// ** 북마크클릭 이벤트**
+bookMark.addEventListener('click', function (e) {
+  showBookmarks(e);
 })
 
 fetchMovies();
