@@ -78,7 +78,8 @@ searchInput.addEventListener('input', (e) => {
   clearTimeout(debounceTimeout);
   debounceTimeout = setTimeout(() => {
     fetchSearchResults(searchResult)
-  }, 200);
+  }, 300);
+
 })
 
 
