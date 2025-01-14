@@ -21,5 +21,22 @@ export const getBookmarks = () => {
 
 // ** 북마크 된 영화 리스트 **
 export const showBookmarks = () => {
-  
+  const bookmarkList = getBookmarks();
+  const movieList = document.querySelector('.movie-list'); //영화카드영역
+  if(bookmarkList) {
+    movieList.innerHTML = ''; //초기화
+    bookmarkList.forEach((movie) => {
+      const { id, title, poster_path, vote_average } = movie;
+      const bookmarkHtml = `
+        <div class="movie-item" id="${id}">
+            <img src="https://image.tmdb.org/t/p/w500${poster_path}" alt="${title}"/>
+            <h3>${title}</h3>
+            <p>평점: ${vote_average}</p>
+          </div>
+      `;
+      movieList.insertAdjacentHTML('beforeend', bookmarkHtml);
+    });
+  } else {
+    movieList.innerHTML = `<p>찜한 영화가 없습니다</p>`;
+  }
 }
