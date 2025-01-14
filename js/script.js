@@ -1,4 +1,4 @@
-import { addBookmark, getBookmarks, showBookmarks } from './bookmark.js';
+import { addBookmark, getBookmarks, showBookmarks, removeBookmark } from './bookmark.js';
 
 const API_URL = 'https://api.themoviedb.org/3/movie/popular?language=ko&page=1';
 const API_TOKEN = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYmYwMjQ4ZTYyMDVkYzA4YTAyNGRiOTNhMWMyZmUzNiIsIm5iZiI6MTczNjI5NjU2NC4yMDk5OTk4LCJzdWIiOiI2NzdkYzg3NDA0NGI2Y2E2NzY0ZTRkOWYiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.s-M0-iIwNQyL3k8gfnll33ZQR8p30YYUQG_kHUZlVbI';
@@ -8,6 +8,7 @@ const movieList = document.querySelector('.movie-list'); //영화카드영역
 const movieModal = document.querySelector('.movie-modal'); //모달
 const searchInput = document.querySelector('#searchInput'); //검색
 const bookMark = document.querySelector('#bookmark'); //찜하기
+const logo = document.querySelector('.logo'); //로고
 const slider = document.querySelector('.slider'); // 슬라이더 사용
 
 let debounceTimeout; // 디바운싱 세팅
@@ -140,13 +141,15 @@ function closeModal() {
 
 // ** 모달창에 띄우는 정보 **
 function renderMoviesDetail(movie) { // matchMovie가 매개변수로 전달됨
-  const { title, poster_path, release_date, vote_average } = movie; //구조분해할당
+  const { title, poster_path, release_date, vote_average, id } = movie; //구조분해할당
 
+  const isBookMark = getBookmarks().some((item) => item.id === id);
+  const bookmarkBtnText = isBookMark ? '찜해제' : '찜하기';
   const detailHtml = `
     <div class="modal-header">
       <h2>${title}</h2>
       <button class="modal-close">닫기</button>
-      <button class="bookmarkbtn">찜하기</button>
+      <button class="bookmarkbtn">${bookmarkBtnText}</button>
     </div>
     <div class="modal-body">
       <img src="https://image.tmdb.org/t/p/w500${poster_path}" alt="${title}" />
@@ -158,8 +161,15 @@ function renderMoviesDetail(movie) { // matchMovie가 매개변수로 전달됨
   // 닫기 버튼 클릭이벤트
   document.querySelector('.modal-close').addEventListener('click', closeModal);
   // 북마크 추가 클릭이벤트
-  document.querySelector('.bookmarkbtn').addEventListener('click', () => {
-    addBookmark(movie);
+  const bookmarkBtn = document.querySelector('.bookmarkbtn');
+  bookmarkBtn.addEventListener('click', () => {
+    if(getBookmarks().some((item) => item.id === id)) {
+      removeBookmark(movie.id);
+      bookmarkBtn.textContent = '찜하기';
+    } else {
+      addBookmark(movie);
+      bookmarkBtn.textContent = '찜해제';
+    }
   });
 }
 
@@ -176,5 +186,6 @@ searchInput.addEventListener('input', (e) => {
 bookMark.addEventListener('click', function (e) {
   showBookmarks(e);
 })
+
 
 fetchMovies();
