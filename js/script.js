@@ -1,4 +1,5 @@
 import { addBookmark, getBookmarks, showBookmarks, removeBookmark } from './bookmark.js';
+import { openModal } from './modal.js';
 
 const API_URL = 'https://api.themoviedb.org/3/movie/popular?language=ko&page=1';
 const API_TOKEN = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYmYwMjQ4ZTYyMDVkYzA4YTAyNGRiOTNhMWMyZmUzNiIsIm5iZiI6MTczNjI5NjU2NC4yMDk5OTk4LCJzdWIiOiI2NzdkYzg3NDA0NGI2Y2E2NzY0ZTRkOWYiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.s-M0-iIwNQyL3k8gfnll33ZQR8p30YYUQG_kHUZlVbI';
@@ -109,66 +110,11 @@ async function fetchSearchResults(query) {
     }
 }
 
-// ** 모달표시 **   1) 클릭된요소확인 2) 클릭된요소 id확인 3) id로 영화데이터확인
-function openModal(e) {
-  const movieTarget = e.target.closest('.movie-item'); // 클릭된 영화 카드
-  if (movieTarget) {
-    const movieId = movieTarget.getAttribute('id'); // 영화 카드의 id 가져오기
-    const matchedMovie = movies.find((movie) => movie.id == movieId); // id로 영화 데이터 찾기
-
-    if (matchedMovie) {
-      renderMoviesDetail(matchedMovie); // 모달에 영화 정보 렌더링
-      movieModal.classList.add('active'); // 모달 표시
-    }
-  }
-}
-
-
-// ** 모달닫기 **
-function closeModal() {
-  movieModal.classList.remove('active');
-}
-
-
-// ** 모달창에 띄우는 정보 **
-function renderMoviesDetail(movie) { // matchMovie가 매개변수로 전달됨
-  const { title, poster_path, release_date, vote_average, id } = movie; //구조분해할당
-
-  const isBookMark = getBookmarks().some((item) => item.id === id);
-  const bookmarkBtnText = isBookMark ? '찜해제' : '찜하기';
-  const detailHtml = `
-    <div class="modal-header">
-      <h2>${title}</h2>
-      <button class="modal-close">닫기</button>
-      <button class="bookmarkbtn">${bookmarkBtnText}</button>
-    </div>
-    <div class="modal-body">
-      <img src="https://image.tmdb.org/t/p/w500${poster_path}" alt="${title}" />
-      <p><strong>개봉일:</strong> ${release_date}</p>
-      <p><strong>★</strong> ${vote_average}</p>
-    </div>
-  `;
-  document.querySelector(".modal-content").innerHTML = detailHtml;
-  // 닫기 버튼 클릭이벤트
-  document.querySelector('.modal-close').addEventListener('click', closeModal);
-
-  // 북마크 추가 클릭이벤트
-  const bookmarkBtn = document.querySelector('.bookmarkbtn');
-  bookmarkBtn.addEventListener('click', () => {
-    if (getBookmarks().some((item) => item.id === id)) {
-      removeBookmark(movie.id);
-      bookmarkBtn.textContent = '찜하기';
-    } else {
-      addBookmark(movie);
-      bookmarkBtn.textContent = '찜해제';
-    }
-  });
-}
 
 
 // ** 영화카드클릭(상세모달) 이벤트 **
 movieList.addEventListener('click', function (e) {
-  openModal(e);
+  openModal(e, movies, movieModal);
 });
 // ** 검색이벤트 **
 searchInput.addEventListener('input', (e) => {
