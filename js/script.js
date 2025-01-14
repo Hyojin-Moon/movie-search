@@ -1,3 +1,5 @@
+import { addBookmark, getBookmarks } from './bookmark.js';
+
 const API_URL = 'https://api.themoviedb.org/3/movie/popular?language=ko&page=1';
 const API_TOKEN = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYmYwMjQ4ZTYyMDVkYzA4YTAyNGRiOTNhMWMyZmUzNiIsIm5iZiI6MTczNjI5NjU2NC4yMDk5OTk4LCJzdWIiOiI2NzdkYzg3NDA0NGI2Y2E2NzY0ZTRkOWYiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.s-M0-iIwNQyL3k8gfnll33ZQR8p30YYUQG_kHUZlVbI';
 const SEARCH_API_URL = 'https://api.themoviedb.org/3/search/movie?include_adult=false&language=ko&page=1';
@@ -5,6 +7,7 @@ const SEARCH_API_URL = 'https://api.themoviedb.org/3/search/movie?include_adult=
 const movieList = document.querySelector('.movie-list'); //영화카드영역
 const movieModal = document.querySelector('.movie-modal'); //모달
 const searchInput = document.querySelector('#searchInput'); //검색
+const bookMark = document.querySelector('#bookmark'); //찜하기
 const slider = document.querySelector('.slider'); // 슬라이더 사용
 
 let debounceTimeout; // 디바운싱 세팅
@@ -71,6 +74,7 @@ searchInput.addEventListener('input', (e) => {
   const searchResult = e.target.value.toLowerCase().trim(); //인풋창에 입력한 값 공백제거 해주기
   if (!searchResult) {
     renderMovies(originMovies); // 검색어 없으면 기본 목록 출력
+    clearTimeout(debounceTimeout);
     return;
   }
   
@@ -79,7 +83,6 @@ searchInput.addEventListener('input', (e) => {
   debounceTimeout = setTimeout(() => {
     fetchSearchResults(searchResult)
   }, 300);
-
 })
 
 
@@ -155,14 +158,16 @@ function renderMoviesDetail(movie) { // matchMovie가 매개변수로 전달됨
   document.querySelector(".modal-content").innerHTML = detailHtml;
   // 닫기 버튼 클릭이벤트
   document.querySelector('.modal-close').addEventListener('click', closeModal);
+  // 북마크 추가 클릭이벤트
+  document.querySelector('.bookmarkbtn').addEventListener('click', () => {
+    addBookmark(movie);
+  });
 }
 
-
-// ** 북마크추가 **
-function addBookmark () {
+// ** 북마크클릭 **
+bookMark.addEventListener('click', function (e) {
   
-}
-
+})
 
 
 // ** 클릭 이벤트 **
