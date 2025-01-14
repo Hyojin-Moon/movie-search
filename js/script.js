@@ -81,7 +81,7 @@ function searchMovies(e) {
 
 
 // ** 검색 API 호출 함수 **
-function fetchSearchResults(query) {
+async function fetchSearchResults(query) {
   const url = `${SEARCH_API_URL}&query=${encodeURIComponent(query)}`; //입력값 query를 인코딩하는 메서드
   const options = {
     method: 'GET',
@@ -91,25 +91,22 @@ function fetchSearchResults(query) {
     },
   };
 
-  fetch(url, options)
-    .then((res) => {
-      if (!res.ok) {
+  const response = await fetch(url, options)
+    try {
+      if (!response.ok) {
         throw new Error('검색 API 호출 실패');
       }
-      return res.json();
-    })
-    .then((data) => {
+      const data = response.json();
       if (data.results.length === 0) {
         movieList.innerHTML = `<p>검색된 결과가 없습니다.</p>`;
       } else {
         movies = data.results; //검색결과 배열에 담기 => 상세페이지 기능 설정
         renderMovies(movies); // 검색 결과 렌더링
       }
-    })
-    .catch((err) => {
+    } catch (err) {
       console.error(err);
       alert('검색 중 문제가 발생했습니다.');
-    });
+    }
 }
 
 // ** 모달표시 **   1) 클릭된요소확인 2) 클릭된요소 id확인 3) id로 영화데이터확인
