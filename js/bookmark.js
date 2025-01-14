@@ -40,3 +40,11 @@ export const showBookmarks = () => {
     movieList.innerHTML = `<p>찜한 영화가 없습니다</p>`;
   }
 }
+
+// ** 북마크 삭제 **
+export const removeBookmark = (movieid) => {
+  let bookmarks = getBookmarks();
+  bookmarks = bookmarks.filter((item) => item.id !== movieid);
+  localStorage.setItem(BOOKMARK_KEY, JSON.stringify(bookmarks));
+  alert('찜해제 되었습니다.');
+};
