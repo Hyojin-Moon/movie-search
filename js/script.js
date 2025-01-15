@@ -55,7 +55,7 @@ function renderMovies(movieData) {
         <div class="movie-item" id="${id}">
             <img src="https://image.tmdb.org/t/p/w500${poster_path}" alt="${title}"/>
             <h3>${title}</h3>
-            <p>평점: ${vote_average}</p>
+            <p>⭐ ${vote_average}</p>
           </div>
         `;
     movieList.insertAdjacentHTML('beforeend', card_html);

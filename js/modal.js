@@ -36,7 +36,7 @@ function renderMoviesDetail(movie, movieModal) {
       <img src="https://image.tmdb.org/t/p/w500${poster_path}" alt="${title}" />
       <h2>${title}</h2>
       <p><strong>개봉일:</strong> ${release_date}</p>
-      <p><strong>★</strong> ${vote_average}</p>
+      <p><strong>⭐</strong> ${vote_average}</p>
       <button class="bookmarkbtn">${bookmarkBtnText}</button>
     </div>
   `;
