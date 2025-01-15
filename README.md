@@ -39,6 +39,5 @@
 ---
 
 ## 📌 기타 정보
-- **API 제공**: [The Movie Database (TMDb)](https://www.themoviedb.org/)
 - **Github Repository**: [movie-search](#)
 
