@@ -6,19 +6,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TBING</title>
   <link rel="stylesheet" href="./css/styles.css">
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&family=Gaegu&family=Jua&family=Nanum+Gothic&family=Orbit&display=swap');
-  </style>
 </head>
 
 <body>
   <header>
     <div class="logocantainer">
-      <img src="./img/logo.png" alt="로고" class="logo" >
+      <img src="./img/logo.png" alt="로고" class="logo">
+      <div class="category">
+        <div>인기영화</div>
+        <div>액션</div>
+        <div>드라마</div>
+        <div>공포</div>
+        <div>연애</div>
+        <div>애니</div>
+        <div id="bookmark">찜</div>
+      </div>
     </div>
     <nav class="header-container">
       <input type="text" id="searchInput" placeholder="영화를 검색하세요">
-      <input type="button" id="bookmark" value="찜">
     </nav>
   </header>
   <main>
@@ -44,6 +49,6 @@
     </div>
   </footer>
 </body>
-  <script type="module" src="./js/script.js"></script>
+<script type="module" src="./js/script.js"></script>
 
 </html>
