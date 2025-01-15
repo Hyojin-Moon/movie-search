@@ -126,7 +126,7 @@ bookMark.addEventListener('click', function () {
 })
 // ** 로고클릭 이벤트 **
 logo.addEventListener('click', function () {
-  location.href = '/index.html'
+  location.href = './index.html'
 })
 
 
