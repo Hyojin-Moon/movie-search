@@ -48,5 +48,5 @@ export const removeBookmark = (movieid) => {
   localStorage.setItem(BOOKMARK_KEY, JSON.stringify(bookmarks));
   alert('찜해제 되었습니다.');
 
-  showBookmarks(); //
+  showBookmarks();
 };

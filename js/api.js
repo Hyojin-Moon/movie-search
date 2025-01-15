@@ -1,7 +1,10 @@
 const API_URL = 'https://api.themoviedb.org/3/movie/popular?language=ko&page=1';
 const API_TOKEN = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYmYwMjQ4ZTYyMDVkYzA4YTAyNGRiOTNhMWMyZmUzNiIsIm5iZiI6MTczNjI5NjU2NC4yMDk5OTk4LCJzdWIiOiI2NzdkYzg3NDA0NGI2Y2E2NzY0ZTRkOWYiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.s-M0-iIwNQyL3k8gfnll33ZQR8p30YYUQG_kHUZlVbI';
 const SEARCH_API_URL = 'https://api.themoviedb.org/3/search/movie?include_adult=false&language=ko&page=1';
-
+const movieList = document.querySelector('.movie-list'); //영화카드영역
+const movieModal = document.querySelector('.movie-modal'); //모달
+let movies = []; //영화데이터저장
+let originMovies = []; //초기데이터 저장
 // ** 인기 영화 데이터 호출 **
 export function fetchMovies() {
   const options = {
@@ -63,3 +66,5 @@ export function fetchSearchResults(query) {
       alert('검색 중 문제가 발생했습니다.');
     });
 }
+
+fetchMovies()

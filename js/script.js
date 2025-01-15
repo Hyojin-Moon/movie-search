@@ -41,28 +41,6 @@ async function fetchMovies() {
   }
 }
 
-// function sliderBorad() {
-
-//   slider.innerHTML = '';
-
-//   const showSliderMovies = movies.slice(0, 5);
-//   showSliderMovies.forEach((movie) => {
-//     const sliderItem = document.createElement('div');
-//     sliderItem.classList.add('slide-item');
-
-//     const img = document.createElement('img');
-//     img.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
-//     img.alt = movie.title;
-
-//     const title = document.createElement('h3');
-//     title.textContent = movie.title;
-
-//     sliderItem.appendChild(img);
-//     sliderItem.appendChild(title);
-
-//     slider.appendChild(sliderItem);
-//   })
-// }
 
 // ** 영화 데이터 노출 **
 function renderMovies(movieData) {
