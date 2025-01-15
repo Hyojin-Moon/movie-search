@@ -111,10 +111,9 @@ async function fetchSearchResults(query) {
 }
 
 
-
 // ** 영화카드클릭(상세모달) 이벤트 **
 movieList.addEventListener('click', function (e) {
-  openModal(e, movies, movieModal);
+  openModal(e, originMovies, movieModal);
 });
 // ** 검색이벤트 **
 searchInput.addEventListener('input', (e) => {
