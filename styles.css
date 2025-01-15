@@ -87,6 +87,7 @@ h1{
   justify-content: center;
   align-items: center;
   z-index: 1;
+  overflow: hidden;
 }
 
 .movie-modal.active {
@@ -94,7 +95,64 @@ h1{
 }
 
 .modal-close{
-  position: absolute;
-  top: 70px;
-  right: 150px;
+}
+.modal-content {
+  background-color: #7272726b;
+  width: 80%;
+  max-width: 500px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+.modal-header {
+  display: flex;
+  justify-content: end;
+  padding: 15px 15px 0 ;
+  background-color: #7a7a7a10;
+}
+.modal-close {
+  background-color: #e4e4e4;
+  border: none;
+  color: black;
+  padding: 8px 16px;
+  border-radius: 5px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.modal-close:hover {
+  color: #a3a3a3; /* 마우스 오버 시 색상 변경 */
+}
+.bookmarkbtn {
+  background-color: #e4e4e4;
+  color: black;
+  border: none;
+  width: 200px;
+  padding: 8px 16px;
+  border-radius: 5px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.bookmarkbtn:hover {
+  background-color: #a3a3a3; /* 마우스 오버 시 색상 변경 */
+}
+.modal-body {
+  padding: 20px;
+  text-align: center;
+  background-color: #7a7a7a10;
+}
+.modal-body img {
+  width: 100%;
+  max-height: 650px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.modal-body h2 {
+  margin-top: 15px;
+  font-size: 1.5em;
+}
+.modal-body p {
+  margin: 5px 0;
+  font-size: 1.1em;
 }

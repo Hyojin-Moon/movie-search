@@ -16,7 +16,7 @@ let debounceTimeout; // 디바운싱 세팅
 let movies = []; //영화데이터저장
 let originMovies = []; //초기데이터 저장
 
-// ** 영화 데이터 가져오기 **
+// ** 영화 API 데이터 가져오기 **
 async function fetchMovies() {
   const options = {
     method: 'GET',
@@ -41,6 +41,28 @@ async function fetchMovies() {
   }
 }
 
+// function sliderBorad() {
+
+//   slider.innerHTML = '';
+
+//   const showSliderMovies = movies.slice(0, 5);
+//   showSliderMovies.forEach((movie) => {
+//     const sliderItem = document.createElement('div');
+//     sliderItem.classList.add('slide-item');
+
+//     const img = document.createElement('img');
+//     img.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+//     img.alt = movie.title;
+
+//     const title = document.createElement('h3');
+//     title.textContent = movie.title;
+
+//     sliderItem.appendChild(img);
+//     sliderItem.appendChild(title);
+
+//     slider.appendChild(sliderItem);
+//   })
+// }
 
 // ** 영화 데이터 노출 **
 function renderMovies(movieData) {
@@ -81,7 +103,7 @@ function searchMovies(e) {
 
 
 
-// ** 검색 API 호출 함수 **
+// ** 검색 API 데이터 호출 함수 **
 async function fetchSearchResults(query) {
   const url = `${SEARCH_API_URL}&query=${encodeURIComponent(query)}`; //입력값 query를 인코딩하는 메서드
   const options = {
@@ -97,7 +119,7 @@ async function fetchSearchResults(query) {
       if (!response.ok) {
         throw new Error('검색 API 호출 실패');
       }
-      const data = response.json();
+      const data = await response.json();
       if (data.results.length === 0) {
         movieList.innerHTML = `<p>검색된 결과가 없습니다.</p>`;
       } else {
@@ -121,8 +143,8 @@ searchInput.addEventListener('input', (e) => {
   searchMovies(e);
 })
 // ** 북마크클릭 이벤트**
-bookMark.addEventListener('click', function (e) {
-  showBookmarks(e);
+bookMark.addEventListener('click', function () {
+  showBookmarks();
 })
 // ** 로고클릭 이벤트 **
 logo.addEventListener('click', function () {
