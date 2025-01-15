@@ -1,7 +1,7 @@
 ![image](https://github.com/user-attachments/assets/daf15d9e-bcd5-491c-b389-69f4ead74990)
 ![image](https://github.com/user-attachments/assets/1efb57be-8ae8-4623-be7c-78038f4df8af)
 ## 배포 주소
-- 
+- https://hyojin-moon.github.io/movie-search/
 # 📽️ Movie Explorer Project
 
 ## 📝 PROJECT 소개
