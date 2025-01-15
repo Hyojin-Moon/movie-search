@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/daf15d9e-bcd5-491c-b389-69f4ead74990)
+![image](https://github.com/user-attachments/assets/6aa5bb1c-b514-44c7-9f1f-ef0c3f768e4a)
 ![image](https://github.com/user-attachments/assets/1efb57be-8ae8-4623-be7c-78038f4df8af)
 ## 배포 주소
 - https://hyojin-moon.github.io/movie-search/
