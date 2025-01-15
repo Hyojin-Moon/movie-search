@@ -10,11 +10,14 @@ body{
   background-color: #000;
   color: #fff;
 }
+.logocantainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .logo{
-  font-size: 24px;
-  font-weight: bold;
-  color: #e50914;
   cursor: pointer;
+  width: 25%;
 }
 h1{
   color: #d8d8d8;
@@ -95,7 +98,7 @@ h1{
 }
 
 .modal-close{
-  
+
 }
 .modal-content {
   background-color: #7272726b;

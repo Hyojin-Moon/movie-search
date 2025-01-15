@@ -30,7 +30,6 @@
 
 ### 🔄 5. 로고 클릭
 - **홈으로 이동**: 로고를 클릭하면 기본 영화 목록 페이지로 이동합니다.
-
 ## 🛠️ 기술 스택
 ### Frontend
 - ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) 시맨틱 구조와 웹 표준을 준수한 마크업 작성
