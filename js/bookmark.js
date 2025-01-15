@@ -7,7 +7,7 @@ export const addBookmark = (movie) => {
   if (!bookmarks.some((item) => item.id === movie.id)) {
     bookmarks.push(movie);
     localStorage.setItem(BOOKMARK_KEY, JSON.stringify(bookmarks));
-    alert('북마크에 추가되었습니다!');
+    alert('찜목록에 추가되었습니다!');
   } else {
     alert('이미 북마크에 추가된 영화입니다.');
   }
@@ -47,4 +47,6 @@ export const removeBookmark = (movieid) => {
   bookmarks = bookmarks.filter((item) => item.id !== movieid);
   localStorage.setItem(BOOKMARK_KEY, JSON.stringify(bookmarks));
   alert('찜해제 되었습니다.');
+
+  showBookmarks(); //
 };
