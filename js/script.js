@@ -67,7 +67,8 @@ function renderMovies(movieData) {
 function searchMovies(e) {
   const searchResult = e.target.value.toLowerCase().trim(); //인풋창에 입력한 값 공백제거 해주기
   if (!searchResult) {
-    renderMovies(originMovies); // 검색어 없으면 기본 목록 출력
+    movies = [...originMovies];
+    renderMovies(movies); // 검색어 없으면 기본 목록 출력
     clearTimeout(debounceTimeout);
     return;
   }
@@ -113,7 +114,7 @@ async function fetchSearchResults(query) {
 
 // ** 영화카드클릭(상세모달) 이벤트 **
 movieList.addEventListener('click', function (e) {
-  openModal(e, originMovies, movieModal);
+  openModal(e, movies, movieModal);
 });
 // ** 검색이벤트 **
 searchInput.addEventListener('input', (e) => {

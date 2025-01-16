@@ -3,11 +3,11 @@
 import { addBookmark, getBookmarks, removeBookmark } from './bookmark.js';
 
 // ** 모달 열기 **
-export function openModal(e, originMovies, movieModal) {
+export function openModal(e, movies, movieModal) {
   const movieTarget = e.target.closest('.movie-item'); // 클릭된 영화 카드
   if (movieTarget) {
     const movieId = movieTarget.getAttribute('id'); // 영화 카드의 id 가져오기
-    const matchedMovie = originMovies.find((movie) => movie.id == movieId); // id로 영화 데이터 찾기
+    const matchedMovie = movies.find((movie) => movie.id == movieId); // id로 영화 데이터 찾기
 
     if (matchedMovie) {
       renderMoviesDetail(matchedMovie, movieModal); // 모달에 영화 정보 렌더링
