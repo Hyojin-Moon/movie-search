@@ -30,6 +30,24 @@
 
 ### 🔄 5. 로고 클릭
 - **홈으로 이동**: 로고를 클릭하면 기본 영화 목록 페이지로 이동합니다.
+
+## 자료구조
+
+### 📂 Project Root  
+┣ 📂 css  
+┃ ┗ 📄 styles.css - 프로젝트 전역 스타일을 정의한 파일  
+┣ 📂 img  
+┃ ┗ 이미지 파일들 저장  
+┣ 📂 js  
+┃ ┣ 📄 api.js - 외부 API와 통신 로직이 포함된 파일  
+┃ ┣ 📄 bookmark.js - 북마크 관련 기능 구현  
+┃ ┣ 📄 modal.js - 모달 창 관련 동작 관리  
+┃ ┗ 📄 script.js - 메인 스크립트 파일 (전체 흐름 관리)  
+┣ 📂 checkList  
+┃ ┗ (체크리스트 관련 파일 저장)  
+┣ 📄 index.html - 프로젝트의 메인 HTML 파일  
+┗ 📄 README.md - 프로젝트 설명과 구조 정보  
+
 ## 🛠️ 기술 스택
 ### Frontend
 - ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) 시맨틱 구조와 웹 표준을 준수한 마크업 작성
