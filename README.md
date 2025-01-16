@@ -35,7 +35,7 @@
 - ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) 시맨틱 구조와 웹 표준을 준수한 마크업 작성
 - ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) 사용자 친화적인 UI 스타일링
 - ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) 데이터 처리 및 이벤트 기반 인터랙션 구현
-- **TMDb API** 영화 데이터 제공
+- **TMDB API** 영화 데이터 제공
 ---
 
 ## 📌 기타 정보

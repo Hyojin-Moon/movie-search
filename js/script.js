@@ -41,7 +41,6 @@ function renderMovies(movieData) {
   });
 }
 
-
 // ** 검색 기능 ** 
 function searchMovies(e) {
   const searchResult = e.target.value.toLowerCase().trim(); //인풋창에 입력한 값 공백제거 해주기
@@ -61,7 +60,6 @@ function searchMovies(e) {
     })
   }, 300);
 }
-
 
 
 

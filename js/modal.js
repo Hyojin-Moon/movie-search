@@ -1,5 +1,3 @@
-// modal.js
-
 import { addBookmark, getBookmarks, removeBookmark } from './bookmark.js';
 
 // ** 모달 열기 **

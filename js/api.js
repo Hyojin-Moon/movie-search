@@ -32,7 +32,6 @@ async function fetchMovies() {
     allData.forEach((e) => {
       dataMovies.push(...e.results);
     })
-    console.log(dataMovies);
     return dataMovies; // 영화 데이터 반환
 
   } catch (err) {
