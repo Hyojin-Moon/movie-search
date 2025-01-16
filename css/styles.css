@@ -13,6 +13,23 @@ body{
   background-color: #000;
   color: #fff;
 }
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%; /* 화면 전체 높이 */
+  display: flex;
+  flex-direction: column; /* 세로 방향 정렬 */
+}
+
+/* Main 영역을 Flex로 설정하여 남은 공간 차지 */
+main {
+  flex: 1; /* 남은 공간을 채움 */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
 .logocantainer{
   display: flex;
   justify-content: center;
