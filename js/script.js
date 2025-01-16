@@ -1,4 +1,4 @@
-import { showBookmarks} from './bookmark.js';
+import { showBookmarks } from './bookmark.js';
 import { openModal } from './modal.js';
 import { fetchMovies, fetchSearchResults } from './api.js';
 

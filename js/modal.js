@@ -9,7 +9,7 @@ export function openModal(e, movies, movieModal) {
 
     if (matchedMovie) {
       renderMoviesDetail(matchedMovie, movieModal); // 모달에 영화 정보 렌더링
-      
+
       movieModal.classList.add('active'); // 모달 표시
     }
   }

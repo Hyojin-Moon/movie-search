@@ -1,4 +1,3 @@
-
 const BOOKMARK_KEY = 'bookmarkedMovies';
 
 // ** 북마크 추가 **
@@ -23,7 +22,7 @@ export const getBookmarks = () => {
 export const showBookmarks = () => {
   const bookmarkList = getBookmarks();
   const movieList = document.querySelector('.movie-list'); //영화카드영역
-  if(bookmarkList) {
+  if (bookmarkList) {
     movieList.innerHTML = ''; //초기화
     bookmarkList.forEach((movie) => {
       const { id, title, poster_path, vote_average } = movie;

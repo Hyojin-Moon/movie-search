@@ -1,7 +1,6 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&family=Gaegu&family=Gothic+A1&family=Jua&family=Nanum+Gothic+Coding&family=Nanum+Gothic:wght@400;700&family=Orbit&family=Sunflower:wght@300&display=swap');
 
-*{
+* {
   font-family: "Do Hyeon", serif;
   font-weight: 400;
   font-style: normal;
@@ -9,61 +8,73 @@
   padding: 0;
   box-sizing: border-box;
 }
-body{
+
+body {
   background-color: #000;
   color: #fff;
 }
-html, body {
+
+html,
+body {
   margin: 0;
   padding: 0;
-  height: 100%; /* 화면 전체 높이 */
+  height: 100%;
+  /* 화면 전체 높이 */
   display: flex;
-  flex-direction: column; /* 세로 방향 정렬 */
+  flex-direction: column;
+  /* 세로 방향 정렬 */
 }
 
 /* Main 영역을 Flex로 설정하여 남은 공간 차지 */
 main {
-  flex: 1; /* 남은 공간을 채움 */
+  flex: 1;
+  /* 남은 공간을 채움 */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
 }
 
-.logocantainer{
+.logocantainer {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px;
   gap: 15px;
 }
-.logo{
+
+.logo {
   cursor: pointer;
   width: 120px;
   height: auto;
 
 }
-.category{
+
+.category {
   display: flex;
   gap: 10px;
   width: 100%;
   justify-content: center;
 }
+
 .category div {
-  cursor: pointer; 
-  font-size: 24px; 
-  color: #e7e7e7; 
-  padding: 5px; 
+  cursor: pointer;
+  font-size: 24px;
+  color: #e7e7e7;
+  padding: 5px;
 }
-#bookmark{
+
+#bookmark {
   color: #f73737;
   font-size: 24px;
-  
+
 }
-h1{
+
+h1 {
   color: #d8d8d8;
 }
-.header-container{
+
+.header-container {
   background-color: #000;
   display: flex;
   justify-content: center;
@@ -71,7 +82,8 @@ h1{
   align-items: center;
   margin-bottom: 10px;
 }
-#searchInput{
+
+#searchInput {
   width: 40%;
   height: 35px;
   margin: 10px;
@@ -79,18 +91,21 @@ h1{
   border: 1px solid #ccc;
   border-radius: 4px;
 }
-#bookmark{
+
+#bookmark {
   width: 10%;
   color: #f73737;
   cursor: pointer;
 }
-.movie-list{
+
+.movie-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
 }
-.movie-item{
+
+.movie-item {
   width: 200px;
   border: 1px solid #fff;
   border-radius: 8px;
@@ -99,10 +114,12 @@ h1{
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   cursor: pointer;
 }
-.movie-item:hover{
+
+.movie-item:hover {
   transform: translateY(-7px);
 }
-.movie-item img{
+
+.movie-item img {
   width: 100%;
   height: 200px;
   border-radius: 4px;
@@ -112,7 +129,8 @@ h1{
 /* 모달 */
 .movie-modal {
   display: none;
-  position: fixed; /* 화면에 고정 */
+  position: fixed;
+  /* 화면에 고정 */
   top: 0;
   left: 0;
   width: 100%;
@@ -125,7 +143,8 @@ h1{
 }
 
 .movie-modal.active {
-  display: flex; /* 모달을 화면에 보이도록 설정*/
+  display: flex;
+  /* 모달을 화면에 보이도록 설정*/
 }
 
 .modal-content {
@@ -136,12 +155,14 @@ h1{
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   overflow: hidden;
 }
+
 .modal-header {
   display: flex;
   justify-content: end;
-  padding: 15px 15px 0 ;
+  padding: 15px 15px 0;
   background-color: #7a7a7a10;
 }
+
 .modal-close {
   background-color: #e4e4e4;
   border: none;
@@ -152,9 +173,12 @@ h1{
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
+
 .modal-close:hover {
-  color: #a3a3a3; /* 마우스 오버 시 색상 변경 */
+  color: #a3a3a3;
+  /* 마우스 오버 시 색상 변경 */
 }
+
 .bookmarkbtn {
   background-color: #e4e4e4;
   color: black;
@@ -166,24 +190,30 @@ h1{
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
+
 .bookmarkbtn:hover {
-  background-color: #a3a3a3; /* 마우스 오버 시 색상 변경 */
+  background-color: #a3a3a3;
+  /* 마우스 오버 시 색상 변경 */
 }
+
 .modal-body {
   padding: 20px;
   text-align: center;
   background-color: #7a7a7a10;
 }
+
 .modal-body img {
   width: 100%;
   max-height: 650px;
   object-fit: cover;
   border-radius: 10px;
 }
+
 .modal-body h2 {
   margin-top: 15px;
   font-size: 1.5em;
 }
+
 .modal-body p {
   margin: 5px 0;
   font-size: 1.1em;
