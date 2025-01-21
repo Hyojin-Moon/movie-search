@@ -12,25 +12,21 @@ async function fetchMovies() {
       Authorization: `Bearer ${API_TOKEN}`
     }
   };
+
   try {
-    const fetchPromises = [];// 페이지 요청의 Promise 배열
+    const dataMovies = [];
     for (let page = 1; page <= totalPages; page++) {
       const url = `https://api.themoviedb.org/3/movie/popular?language=ko&page=${page}`;
-      fetchPromises
-        .push(fetch(url, options)
-          .then(response => {
-            if (!response.ok) {
-              throw new Error("네트워크 주소가 ok아님"); //잘못된 주소가 오면 에러처리
-            }
-            return response.json();
-          }));
+      const response = await fetch(url, options);
+
+      if (!response.ok) {
+        throw new Error("네트워크 주소 오류");
+      }
+      const data = await response.json();
+
+      dataMovies.push(...data.results);
     }
 
-    const allData = await Promise.all(fetchPromises); // 요청받은 모든 데이터
-    const dataMovies = [];
-    allData.forEach((e) => {
-      dataMovies.push(...e.results);
-    })
     return dataMovies; // 영화 데이터 반환
 
   } catch (err) {
